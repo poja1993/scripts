@@ -1,0 +1,31 @@
+#!/bin/bash
+cd /srv
+
+echo "Backup homeassistant"
+sudo cp -r homeassistant homeassistant.bak
+
+echo "Stopping Service"
+sudo systemctl stop home-assistant@homeassistant
+
+echo "Switch User to homassistant"
+sudo -u homeassistant -H -s bash << EOF
+
+echo "Activating Virtual Environment"
+cd homeassistant
+source bin/activate
+
+echo "Updating Homassistant"
+pip3 install --upgrade homeassistant
+
+echo "Leaving VEnv"
+exit
+
+echo "Changing User"
+exit
+
+EOF
+
+echo "Update Completed"
+
+echo "Restarting Service"
+sudo systemctl start home-assistant@homeassistant
