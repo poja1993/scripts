@@ -1,4 +1,9 @@
 #!/bin/bash
+# HomeAssistant Core environment update script
+# Environment located in: /srv/homeassistant
+# User used for HomeAssistant: homeassistant
+# Run script with sudoer user
+
 cd /srv
 
 echo "Backup homeassistant"
