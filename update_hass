@@ -23,7 +23,7 @@ echo "Updating Homassistant"
 pip3 install --upgrade homeassistant
 
 echo "Leaving VEnv"
-exit
+deactivate
 
 echo "Changing User"
 exit
