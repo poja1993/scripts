@@ -6,14 +6,17 @@
 
 cd /srv
 
-echo "Backup homeassistant"
-sudo cp -r homeassistant homeassistant.bak
-
 echo "Stopping Service"
 sudo systemctl stop home-assistant@homeassistant
 
-echo "Switch User to homassistant"
+echo "Switch User to homeassistant"
 sudo -u homeassistant -H -s bash << EOF
+
+echo "Backup Homeassistant environment"
+cp -r homeassistant homeassistant.bak
+
+echo "Backup configuration"
+cp -r /home/homeassistant/.homeassistant /home/homeassistant/snapshots/homeassistant`date +%Y%m%d`
 
 echo "Activating Virtual Environment"
 cd homeassistant
