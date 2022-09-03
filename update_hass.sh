@@ -13,10 +13,12 @@ echo "Switch User to homeassistant"
 sudo -u homeassistant -H -s bash << EOF
 
 echo "Backup Homeassistant environment"
-cp -r homeassistant homeassistant.bak
+cp -r homeassistant /mnt/external/homeassistant/venv/homeassistant`date +%Y%m%d`
+#homeassistant.bak
 
 echo "Backup configuration"
-cp -r /home/homeassistant/.homeassistant /home/homeassistant/snapshots/homeassistant`date +%Y%m%d`
+cp -r /home/homeassistant/.homeassistant /mnt/external/homeassistant/snapshots/homeassistant`date +%Y%m%d`
+#/home/homeassistant/snapshots/homeassistant`date +%Y%m%d`
 
 echo "Activating Virtual Environment"
 cd homeassistant
